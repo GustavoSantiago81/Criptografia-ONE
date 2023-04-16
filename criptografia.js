@@ -1,6 +1,8 @@
 // Bloquear caracteres especiais e letras maiúsculas
+//let texto = document.querySelector('#texto')
+let texto = document.getElementById('#texto')
 
-textoInput.addEventListener("keydown", function(e) {
+texto.addEventListener("keydown", function (e) {
   if (!checkChar(e)) {
     e.preventDefault();
   }
@@ -14,6 +16,40 @@ function checkChar(e) {
     alert("Não é permitido letras maiúsculas!");
     return false;
   } else if (charCode >= 32 && charCode <= 47) {
+    alert("Não é permitido caracteres especiais!");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function Init () {
+  var textoA = document.getElementById('texto');
+  textoA.addEventListener( 'keypress', checkName, false );
+}
+
+function checkName(evt) {
+  var charCode = evt.charCode;
+  if (charCode != 0) {
+      if (charCode < 97 || charCode > 122) {
+          evt.preventDefault();
+          alert(
+              "Não é permitido letras maiúsculas nem caracteres especiais!"
+              + "\n" + "charCode: " + charCode + "\n"
+          );
+      }
+  }
+}
+
+
+
+function validaTexto() {
+  //let txt = document.querySelector('#texto')
+  let txt = document.getElementById('#texto')
+  if (txt >= 65 && txt <= 90) {
+    alert("Não é permitido letras maiúsculas!");
+    return false;
+  } else if (txt >= 32 && txt <= 47) {
     alert("Não é permitido caracteres especiais!");
     return false;
   } else {
